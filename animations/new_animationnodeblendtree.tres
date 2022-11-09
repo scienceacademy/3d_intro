@@ -1,0 +1,33 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=7 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Run-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Sprint-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeBlend3" id=4]
+
+[sub_resource type="AnimationNodeTimeScale" id=5]
+
+[sub_resource type="AnimationNodeTimeScale" id=6]
+
+[resource]
+graph_offset = Vector2( -313.077, -52.9579 )
+nodes/Animation/node = SubResource( 3 )
+nodes/Animation/position = Vector2( 370, 70 )
+"nodes/Animation 2/node" = SubResource( 1 )
+"nodes/Animation 2/position" = Vector2( 370, 220 )
+"nodes/Animation 3/node" = SubResource( 2 )
+"nodes/Animation 3/position" = Vector2( 380, 360 )
+nodes/iwr/node = SubResource( 4 )
+nodes/iwr/position = Vector2( 1020, 110 )
+nodes/output/position = Vector2( 1320, 190 )
+nodes/run_scale/node = SubResource( 5 )
+nodes/run_scale/position = Vector2( 680, 210 )
+nodes/sprint_scale/node = SubResource( 6 )
+nodes/sprint_scale/position = Vector2( 680, 360 )
+node_connections = [ "run_scale", 0, "Animation 2", "iwr", 0, "Animation", "iwr", 1, "run_scale", "iwr", 2, "sprint_scale", "sprint_scale", 0, "Animation 3", "output", 0, "iwr" ]

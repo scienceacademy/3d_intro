@@ -1,16 +1,29 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demo1.gd" type="Script" id=2]
 [ext_resource path="res://textures/Stylized_Stone_Floor_005_normal.jpg" type="Texture" id=3]
 [ext_resource path="res://textures/Stylized_Stone_Floor_005_basecolor.jpg" type="Texture" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
+[ext_resource path="res://textures/Stylized_Stone_Floor_005_ambientOcclusion.jpg" type="Texture" id=6]
+[ext_resource path="res://textures/Stylized_Stone_Floor_005_height.png" type="Texture" id=7]
 
 [sub_resource type="SpatialMaterial" id=7]
 albedo_texture = ExtResource( 4 )
 normal_enabled = true
 normal_scale = 3.42
 normal_texture = ExtResource( 3 )
+ao_enabled = true
+ao_light_affect = 0.16
+ao_texture = ExtResource( 6 )
+ao_on_uv2 = false
+ao_texture_channel = 4
+depth_enabled = true
+depth_scale = 0.1
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 7 )
 uv1_scale = Vector3( 3, 3, 3 )
 
 [sub_resource type="PlaneMesh" id=2]
