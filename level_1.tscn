@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://dusxoeo1wy0dy"]
+
+[ext_resource type="PackedScene" uid="uid://uv4nqrlrqxnh" path="res://environment/wall.gltf.glb" id="1_67ubd"]
+[ext_resource type="Script" path="res://level_1.gd" id="1_c48w2"]
+[ext_resource type="PackedScene" uid="uid://cr2t5a2pgagjr" path="res://environment/floor_tile_large.gltf.glb" id="2_kok4r"]
+[ext_resource type="PackedScene" uid="uid://326fw7ct453k" path="res://knight.tscn" id="3_gt3hi"]
+[ext_resource type="PackedScene" uid="uid://bwsbfas3wgqd0" path="res://environment/wall_corner.gltf.glb" id="5_0mlnd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vgdys"]
+load_path = "res://.godot/imported/buikslotermeerplein_2k.exr-b7d88afac48102326283f8f615f887cb.bptc.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a6m50"]
+panorama = SubResource("CompressedTexture2D_vgdys")
+
+[sub_resource type="Sky" id="Sky_dupov"]
+sky_material = SubResource("PanoramaSkyMaterial_a6m50")
+
+[sub_resource type="Environment" id="Environment_vhcmo"]
+background_mode = 1
+background_energy_multiplier = 1.25
+sky = SubResource("Sky_dupov")
+sky_rotation = Vector3(3.48787e-16, -0.31765, 3.48787e-16)
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_c48w2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vhcmo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.965925, -0.224147, 0.129411, -2.98812e-09, 0.499998, 0.866026, -0.258823, 0.836516, -0.482961, 0, 7, -1)
+shadow_enabled = true
+
+[node name="wall_gltf" parent="." instance=ExtResource("1_67ubd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="wall_gltf3" parent="." instance=ExtResource("1_67ubd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 4)
+
+[node name="wall_gltf4" parent="." instance=ExtResource("1_67ubd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 12)
+
+[node name="wall_gltf5" parent="." instance=ExtResource("1_67ubd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, 0, 12)
+
+[node name="wall_gltf6" parent="." instance=ExtResource("1_67ubd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 0, 12)
+
+[node name="wall_gltf2" parent="." instance=ExtResource("1_67ubd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 8)
+
+[node name="floor_tile_large_gltf" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="floor_tile_large_gltf2" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="floor_tile_large_gltf3" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="floor_tile_large_gltf4" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+
+[node name="floor_tile_large_gltf5" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+
+[node name="floor_tile_large_gltf6" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="floor_tile_large_gltf7" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="floor_tile_large_gltf8" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="floor_tile_large_gltf9" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4)
+
+[node name="floor_tile_large_gltf10" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 8)
+
+[node name="floor_tile_large_gltf11" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 8)
+
+[node name="floor_tile_large_gltf15" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 12)
+
+[node name="floor_tile_large_gltf16" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+
+[node name="floor_tile_large_gltf17" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
+
+[node name="floor_tile_large_gltf18" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 12)
+
+[node name="floor_tile_large_gltf12" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 4)
+
+[node name="floor_tile_large_gltf13" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+
+[node name="floor_tile_large_gltf14" parent="." instance=ExtResource("2_kok4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+
+[node name="Node3D" parent="." instance=ExtResource("3_gt3hi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, -7, 10, 0)
+visible = false
+light_energy = 10.6
+shadow_enabled = true
+spot_range = 14.0
+spot_attenuation = 0.466516
+spot_angle = 15.8401
+
+[node name="wall_corner_gltf" parent="." instance=ExtResource("5_0mlnd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 12)

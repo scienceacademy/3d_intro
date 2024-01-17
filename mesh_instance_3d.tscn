@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1cjcnbc46x2i"]
+
+[ext_resource type="Script" path="res://mesh_instance_3d.gd" id="1_d2ysl"]
+[ext_resource type="Texture2D" uid="uid://d1egvasu1jd1r" path="res://brick-wall_albedo.png" id="1_pt3l6"]
+[ext_resource type="Texture2D" uid="uid://b0wr1dhgv4swt" path="res://brick-wall_normal-ogl.png" id="2_7m2vw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5d6eg"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_atkus"]
+sky_material = SubResource("ProceduralSkyMaterial_5d6eg")
+
+[sub_resource type="Environment" id="Environment_7ivq8"]
+background_mode = 2
+sky = SubResource("Sky_atkus")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwube"]
+albedo_color = Color(0.533333, 0.486275, 0.211765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b38mk"]
+material = SubResource("StandardMaterial3D_fwube")
+size = Vector3(50, 1, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ldjrb"]
+data = PackedVector3Array(-25, 0.5, 25, 25, 0.5, 25, -25, -0.5, 25, 25, 0.5, 25, 25, -0.5, 25, -25, -0.5, 25, 25, 0.5, -25, -25, 0.5, -25, 25, -0.5, -25, -25, 0.5, -25, -25, -0.5, -25, 25, -0.5, -25, 25, 0.5, 25, 25, 0.5, -25, 25, -0.5, 25, 25, 0.5, -25, 25, -0.5, -25, 25, -0.5, 25, -25, 0.5, -25, -25, 0.5, 25, -25, -0.5, -25, -25, 0.5, 25, -25, -0.5, 25, -25, -0.5, -25, 25, 0.5, 25, -25, 0.5, 25, 25, 0.5, -25, -25, 0.5, 25, -25, 0.5, -25, 25, 0.5, -25, -25, -0.5, 25, 25, -0.5, 25, -25, -0.5, -25, 25, -0.5, 25, 25, -0.5, -25, -25, -0.5, -25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lu34h"]
+albedo_texture = ExtResource("1_pt3l6")
+normal_enabled = true
+normal_scale = 2.4
+normal_texture = ExtResource("2_7m2vw")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjkou"]
+material = SubResource("StandardMaterial3D_lu34h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3rjv"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_d2ysl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7ivq8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_b38mk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ldjrb")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43553, 0)
+
+[node name="Cube" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_rjkou")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_t3rjv")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107593, 1.21406, 2.86058)
